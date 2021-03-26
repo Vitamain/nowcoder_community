@@ -11,4 +11,10 @@ public interface DiscussPostService {
     List<DiscussPost> selectDiscussPosts(int userId, int offset, int limit);
 
     int selectDiscussPostsRows(int userId);
+
+    int addDiscussPost(DiscussPost post) ;
+
+    DiscussPost selectDiscussPostById(int id);
+
+    int updateCommentCount(int id, int commentCount);
 }

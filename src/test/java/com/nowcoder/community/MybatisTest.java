@@ -1,7 +1,9 @@
 package com.nowcoder.community;
 
 import com.nowcoder.community.entity.DiscussPost;
+import com.nowcoder.community.entity.LoginTicket;
 import com.nowcoder.community.mapper.DiscussPostMapper;
+import com.nowcoder.community.mapper.LoginTicketMapper;
 import com.nowcoder.community.mapper.UserMapper;
 import com.nowcoder.community.entity.User;
 import org.junit.Test;
@@ -30,6 +32,10 @@ public class MybatisTest {
     private UserMapper userMapper;
     @Autowired
     private DiscussPostMapper discussPostMapper;
+
+    @Autowired
+    private LoginTicketMapper loginTicketMapper;
+
     @Test
     public void testSelectById() {
         User user = userMapper.selectById(101);
@@ -71,5 +77,17 @@ public class MybatisTest {
         }
         int rows = discussPostMapper.selectDiscussPostsRows(0);
         System.out.println(rows);
+    }
+
+    @Test
+    public void testLoginTicket() {
+        LoginTicket loginTicket = new LoginTicket();
+        loginTicket.setUserId(2);
+        loginTicket.setStatus(0);
+        loginTicket.setTicket("123");
+        loginTicket.setExpired(new Date());
+        loginTicketMapper.insertLoginTicket(loginTicket);
+
+
     }
 }

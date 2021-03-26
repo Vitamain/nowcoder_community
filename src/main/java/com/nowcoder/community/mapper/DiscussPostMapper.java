@@ -16,4 +16,13 @@ public interface DiscussPostMapper {
 
     // 查询帖子总数量
     int selectDiscussPostsRows(@Param("userId") int userId);
+
+    // 插入一条帖子
+    int insertDiscussPosts(DiscussPost discussPost);
+
+    // 根据 id 查询帖子
+    DiscussPost selectDiscussPostById(int id);
+
+    // 修改帖子的评论数量
+    int updateCommentCount(int id, int commentCount);
 }

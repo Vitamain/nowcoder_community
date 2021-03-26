@@ -4,9 +4,16 @@ import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import javax.annotation.PostConstruct;
+
 @SpringBootApplication
-@MapperScan(basePackages = "com.nowcoder.community.mapper")
 public class CommunityApplication {
+    @PostConstruct
+    public void init() {
+        // 解决 netty 启动冲突的问题
+        System.setProperty("es.set.netty.runtime.available.processors", "false");
+    }
+
     public static void main(String[] args) {
         SpringApplication.run(CommunityApplication.class, args);
     }
